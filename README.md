@@ -8,9 +8,20 @@ PortRanger converts an unordered list of ports on separate lines, which may cont
 
 PortRanger is useful when you need ports in a range format for reporting, or where you have limited space. A typical example of a use is to produce a shorter port list that will fit under the Nessus limit of 1024 characters for specifying a custom list of ports to scan.
 
-## Command-line arguments
+![Screenshot](images/nessus-character-limit.png)
 
-When no arguments are supplied, PortRanger merges only consecutive port numbers into ranges. If the default output contains too many characters, PortRanger allows you to extend the ranges to produce a shorted list. This is done by supplying an integer greater than 1 as a command line argument.
+## Usage
+
+### Command-line arguments
+
+When no arguments are supplied:
+```
+cat unordered_port_list.txt | PortRanger.sh
+```
+PortRanger merges only consecutive port numbers into ranges. If the default output contains too many characters, PortRanger allows you to extend the ranges to produce a shorted list. This is done by supplying an integer greater than 1 as a command line argument. E.g. 18 :
+```
+cat unordered_port_list.txt | PortRanger.sh 18
+```
 
 Alternatively, PortRanger can be used with a command-line argument of `0`, which prevents even consecutive numbers from being merged, so no ranges will be produced. This produces the same output as something like:
 
@@ -18,7 +29,7 @@ Alternatively, PortRanger can be used with a command-line argument of `0`, which
 cat unordered_port_list | sort -un | paste -sd,
 ```
 
-## Examples
+## Example input/output
 
 By default, providing this port list to PortRanger:
 
@@ -49,7 +60,7 @@ And with an argument of `5`, it would produce:
 1-10
 ```
 
-## Usage
+### Detailed examples
 
 To provide PortRanger with a list of open ports from some nmap grepage, and get a default range list:
 
