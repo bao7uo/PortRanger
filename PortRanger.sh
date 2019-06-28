@@ -15,7 +15,7 @@
 
 if test -t 0; then
     echo PortRanger requires a port list on stdin.
-    echo 'e.g. grep -oP "[0-9]+(?=/open)"'\
+    echo 'e.g. grep -oPh "[0-9]{0,5}(?=/open)"'\
             'my_results.gnmap | ./PortRanger.sh'
     exit
 fi
